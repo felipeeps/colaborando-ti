@@ -8,18 +8,17 @@
         {!! csrf_field() !!}
 
         <p class="form-group">
-            <label for="name_post">Titulo:</label>
-            <input name="name_post" required="" class="form-control" type="text">
+            <label for="name">Titulo:</label>
+            <input name="name" required="" class="form-control" type="text">
         </p>
         
         <p class="form-group">
             <label for="categorie">Categoria:</label>
-            <select class="custom-select" name="categorie" id="categorie">
-                <option value="" disabled selected hidden>Escolha a categoria do POST...</option>
+            <select name="categorie" id="categorie">
                 @foreach($categorias as $categoria)
                     <option value="{{$categoria->id}}">{{$categoria->name}}</option>                
                 @endforeach
-            </select>
+        </select>
         </p>
 
         <p class="form-group">
@@ -42,7 +41,11 @@
         </p>
 
         <p class="form-group">
-            <input type="hidden" name="status" value="Aguardando Aprovação">
+            <label for="status">Status</label>
+            <select class="form-control" name="status">
+            <option>Mandar para Aprovação</option>
+            <option>Publicar</option>
+            </select>
         </p>
 
         <label for="status">Como você avalia esse post?</label>
@@ -64,11 +67,6 @@
             <input class="btn btn-default" type="reset" value="Limpar">
             <input class="btn btn-primary" type="submit" value="Enviar">
         </p>
-
-        <p class="form-group">
-            <input type="hidden" name="autor" value="{{Auth::user()->name}}">
-        </p>
-
 @endsection
 
 
