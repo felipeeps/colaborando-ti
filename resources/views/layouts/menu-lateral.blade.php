@@ -81,6 +81,17 @@
         </li>
         <!-- FIM APROVAÇÕES -->
 
+        <!-- APROVAÇÕES -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i i class="fa fa-th-list" aria-hidden="true"></i>
+                <span>Visualizar</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="#">Cursos</a>
+                <a class="dropdown-item" href="#">Posts</a>
+        </li>
+
     </ul>
     <!-- FIM Operações Menu Lateral -->
 </div>

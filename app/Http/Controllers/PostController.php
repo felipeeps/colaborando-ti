@@ -54,7 +54,7 @@ class PostController extends Controller
             ->select('posts.*', 'categories.name')
             ->where('posts.status', '=', 'Aguardando Aprovação')
             ->get();
-            return view('posts.aprove',compact('pendente'));
+            return view('manager.aprove',compact('pendente'));
     }
 
     public function aprovarPost($id){
