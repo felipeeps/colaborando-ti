@@ -16,5 +16,6 @@ Route::resource('posts', 'PostController')->middleware('auth');
 Route::get('/aprovarposts', 'PostController@listaPostsAprovar')->name('aprovarposts')->middleware('auth');
 Route::get('/postaprovado/{id}', 'PostController@aprovarPost')->middleware('auth');
 Route::get('/postreprovado/{id}', 'PostController@reprovarPost')->middleware('auth');
+Route::get('/postdesativado/{id}', 'PostController@desativarPost')->middleware('auth');
 
 

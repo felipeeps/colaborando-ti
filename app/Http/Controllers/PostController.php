@@ -12,11 +12,13 @@ class PostController extends Controller
 {
 
     public function index(){
-        $posts = Post::Paginate(8);
-        $categorias = new Post();
-        $listacategorias = $categorias->postsCategorias();
+        $posts = DB::table('posts')
+            ->join('categories', 'posts.categorie', '=', 'categories.id')
+            ->select('posts.*', 'categories.name')
+            ->where('posts.status', '!=', 'Desativado')
+            ->paginate(8);
 
-        return view('posts.index', compact('posts','listacategorias')); //Compact para passar os dados do product para a view
+        return view('posts.index', compact('posts')); //Compact para passar os dados do product para a view
     }
 
     public function create(){
@@ -31,16 +33,21 @@ class PostController extends Controller
 
     public function show($id){
         $posts = Post::findOrFail($id);
-
         return view('posts.show', compact('posts'));
     }
 
     public function edit($id){
-        //
+        $posts = Post::findOrFail($id);
+
+        $categorias = Categories::all();
+        return view('posts.edit', compact('posts', 'categorias'));
     }
 
     public function update(Request $request, $id){
-        //
+        $posts = Post::findOrFail($id);
+        $posts->update($request->all());
+        return redirect()->route('posts.index');
+
     }
 
 
@@ -69,5 +76,13 @@ class PostController extends Controller
             ->where('id', $id)
             ->update(['status' => 'Reprovado']);
             return redirect('aprovarposts');
+    }
+
+    
+    public function desativarPost($id){
+        DB::table('posts')
+            ->where('id', $id)
+            ->update(['status' => 'Desativado']);
+            return redirect()->route('posts.index');
     }
 }
