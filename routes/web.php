@@ -1,7 +1,5 @@
 <?php
-Route::get('/', function () {
-    return view('inicio');
-})->middleware('auth');
+Route::get('/', 'PublicController@dependeciasPaginaInicial')->name('');
 
 Auth::routes();
 

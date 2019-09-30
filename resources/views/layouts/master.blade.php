@@ -6,7 +6,7 @@
     <title>@yield('title', 'Colaborando TI')</title>
 
     <!-- CSS da aplicação -->
-    @include('estilos.estilos')
+    @include('estilos.estilos-manager')
 </head>
 
   <body id="page-top">
@@ -29,7 +29,7 @@
     </div>
     
     <!-- Section com os scripts -->
-        @include('scripts.scripts')
+        @include('scripts.scripts-manager')
     <!-- Fim Section com os scripts -->
 
   </body>
