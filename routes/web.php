@@ -1,9 +1,7 @@
 <?php
 Route::get('/', 'PublicController@dependeciasPaginaInicial')->name('');
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->middleware('auth');
 
 //Controller tipo RestFul
 Route::resource('products', 'ProdutoController')->middleware('auth');

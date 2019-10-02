@@ -12,7 +12,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="login">
-                        <form action="#" class="row">
+                        <form action="{{ route('register') }}" class="row">
                             <div class="col-12">
                                 <input type="text" class="form-control mb-3" id="signupName" name="signupName" placeholder="Nome">
                             </div>
