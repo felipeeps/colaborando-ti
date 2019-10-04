@@ -1,4 +1,5 @@
 <!-- Styles páginas públicas -->
+<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ url('plugins/bootstrap/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ url('plugins/slick/slick.css') }}">
 <link rel="stylesheet" href="{{ url('plugins/themify-icons/themify-icons.css') }}">

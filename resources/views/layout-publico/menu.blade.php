@@ -10,13 +10,13 @@
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav ml-auto text-center">
                             <li class="nav-item @@home">
-                                <a class="nav-link" href="index.html">Inicio</a>
+                                <a class="nav-link" href="/">Inicio</a>
                             </li>
                             <li class="nav-item @@about">
                                 <a class="nav-link" href="#">Sobre nós</a>
                             </li>
                             <li class="nav-item @@blog">
-                                <a class="nav-link" href="#">Postagens</a>
+                                <a class="nav-link" href="/postagens">Postagens</a>
                             </li>
                             <li class="nav-item dropdown view">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

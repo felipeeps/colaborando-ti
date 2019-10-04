@@ -1,5 +1,9 @@
 <?php
+//Publicos
 Route::get('/', 'PublicController@dependeciasPaginaInicial')->name('');
+Route::get('/postagens', 'PublicController@dependeciasPaginaPostagens');
+
+//Rotas
 Auth::routes();
 Route::get('/admin', 'HomeController@index')->middleware('auth');
 
