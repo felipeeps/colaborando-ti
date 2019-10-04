@@ -16,7 +16,7 @@
                         </ul>
                         <ul class="list-inline mb-3">
                             <!-- categoria -->
-                            <li class="list-inline-item mr-3 ml-0"><a class="text-light" href="#"><i class="ti-tag mr-2"></i>{{$pend->name}}</a></li>
+                            <li class="list-inline-item mr-3 ml-0"><a class="text-light" href="#"><i class="ti-tag mr-2"></i>{{$pend->name}}: {{$pend->nivel}}</a></li>
                         </ul>
                         <a href="blog-single.html">
                             <h4 class="card-title">{{$pend->name_post}}</h4>
