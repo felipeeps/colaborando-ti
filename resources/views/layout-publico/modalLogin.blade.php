@@ -12,7 +12,7 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="col-12">
-                        <input type="text" class="form-control mb-3" id="email" name="email" placeholder="E-mail" value="{{ old('email') }}" required autofocus>
+                        <input type="text" class="form-control mb-3 {{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email" placeholder="E-mail" value="{{ old('email') }}" required autofocus>
 
                         @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="col-12">
-                        <input type="password" class="form-control mb-3" id="password" name="password" placeholder="Senha" required>
+                        <input type="password" class="form-control mb-3 {{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password" placeholder="Senha" required>
                         
                         @if ($errors->has('password'))
                             <span class="invalid-feedback" role="alert">
