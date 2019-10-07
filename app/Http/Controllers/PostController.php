@@ -11,7 +11,8 @@ use App\Http\Requests\PostRequest;
 class PostController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         $posts = DB::table('posts')
             ->join('categories', 'posts.categorie', '=', 'categories.id')
             ->select('posts.*', 'categories.name')
@@ -21,68 +22,77 @@ class PostController extends Controller
         return view('posts.index', compact('posts')); //Compact para passar os dados do product para a view
     }
 
-    public function create(){
+    public function create()
+    {
         $categorias = Categories::all();
         return view('posts.create', compact('categorias'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         Post::create($request->all());
         return redirect()->route('posts.index');
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $posts = Post::findOrFail($id);
         return view('posts.show', compact('posts'));
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $posts = Post::findOrFail($id);
 
         $categorias = Categories::all();
         return view('posts.edit', compact('posts', 'categorias'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $posts = Post::findOrFail($id);
         $posts->update($request->all());
         return redirect()->route('posts.index');
-
     }
 
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         //
     }
 
-    public function listaPostsAprovar(){ //busca todos os posts com Aprovação pendente
+    public function listaPostsAprovar()
+    { //busca todos os posts com Aprovação pendente
         $pendente = DB::table('posts')
             ->join('categories', 'posts.categorie', '=', 'categories.id')
             ->select('posts.*', 'categories.name')
             ->where('posts.status', '=', 'Aguardando Aprovação')
             ->get();
-            return view('manager.aprove',compact('pendente'));
+        return view('manager.aprove', compact('pendente'));
     }
 
-    public function aprovarPost($id){
+    public function aprovarPost($id)
+    {
         DB::table('posts')
             ->where('id', $id)
             ->update(['status' => 'Aprovado']);
-            return redirect('aprovarposts');
+        return redirect('aprovarposts');
     }
 
-    public function reprovarPost($id){
+    public function reprovarPost($id)
+    {
         DB::table('posts')
             ->where('id', $id)
             ->update(['status' => 'Reprovado']);
-            return redirect('aprovarposts');
+        return redirect('aprovarposts');
     }
 
-    
-    public function desativarPost($id){
+
+    public function desativarPost($id)
+    {
         DB::table('posts')
             ->where('id', $id)
             ->update(['status' => 'Desativado']);
-            return redirect()->route('posts.index');
+        return redirect()->route('posts.index');
     }
 }

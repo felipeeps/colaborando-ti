@@ -16,13 +16,13 @@
                         </ul>
                         <ul class="list-inline mb-3">
                             <!-- categoria -->
-                            <li class="list-inline-item mr-3 ml-0"><a class="text-light" href="#"><i class="ti-tag mr-2"></i>{{$pend->name}}: {{$pend->nivel}}</a></li>
+                            <li class="list-inline-item mr-3 ml-0"><i class="ti-tag mr-2"></i>{{$pend->name}}: {{$pend->nivel}}</li>
                         </ul>
-                        <a href="blog-single.html">
+                        <a href="postagens/{{$pend->id}}">
                             <h4 class="card-title">{{$pend->name_post}}</h4>
                         </a>
                         <p class="card-text" style="max-width: 50ch;  overflow: hidden;  text-overflow: ellipsis;  white-space: nowrap">{{$pend->description}}</p>
-                        <a href="blog-single.html" class="btn btn-primary btn-sm">Leia Mais</a>
+                        <a href="postagens/{{$pend->id}}" class="btn btn-primary btn-sm">Leia Mais</a>
                     </div>
                 </div>
             </article>

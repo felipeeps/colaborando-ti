@@ -20,6 +20,7 @@ class Posts extends Migration
             $table->string('status');
             $table->float('nota', 8, 2);
             $table->string('autor');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

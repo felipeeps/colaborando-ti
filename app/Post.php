@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['name_post', 'categorie', 'nivel', 'link', 'description', 'status', 'nota', 'autor'];
+    protected $fillable = ['name_post', 'categorie', 'nivel', 'link', 'description', 'status', 'nota', 'autor', 'image'];
 
     public function categoria(){
         return $this->belongsTo('App\Categories'); //Recebe a chave

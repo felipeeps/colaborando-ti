@@ -2,6 +2,7 @@
 //Publicos
 Route::get('/', 'PublicController@dependeciasPaginaInicial')->name('');
 Route::get('/postagens', 'PublicController@dependeciasPaginaPostagens');
+Route::get('/postagens/{id}', 'PublicController@dependeciasPaginaPostagensID');
 
 //Rotas
 Auth::routes();
