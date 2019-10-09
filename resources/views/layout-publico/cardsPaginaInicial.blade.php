@@ -27,7 +27,7 @@
                             <h4 class="card-title">Postagens</h4>
                         </a>
                         <p class="card-text mb-4"> Postagens de dúvidas, correções de problemas e curiosidades de assuntos de TI, publicados pelos estudantes.</p>
-                        <a href="#" class="btn btn-primary btn-sm">Acesse a página de postagens</a>
+                        <a href="/postagens" class="btn btn-primary btn-sm">Acesse a página de postagens</a>
                     </div>
                 </div>
             </div>
@@ -36,11 +36,11 @@
                 <div class="card p-0 border-primary rounded-0 hover-shadow">
                     <img class="card-img-top rounded-0" src="{{ url('images/index/course-3.jpg')}}" alt="course thumb">
                     <div class="card-body">
-                        <a href="#">
+                        <a href="/admin">
                             <h4 class="card-title">Colaboração</h4>
                         </a>
                         <p class="card-text mb-4"> Colabore com nossa comunidade, disponibilizando o seu conhecimento sem medo.</p>
-                        <a href="#" class="btn btn-primary btn-sm">Começar a colaborar!</a>
+                        <a href="/admin" class="btn btn-primary btn-sm">Começar a colaborar!</a>
                     </div>
                 </div>
             </div>

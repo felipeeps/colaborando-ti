@@ -18,7 +18,7 @@ class PublicController extends Controller{
         $categorias = Categories::all();
         $posts = DB::table('posts')
         ->join('categories', 'posts.categorie', '=', 'categories.id')
-        ->select('posts.*', 'categories.name')
+        ->select('posts.*', 'categories.name', 'categories.categorie_image')
         ->where('posts.status', '=', 'Aprovado')
         ->get();
 

@@ -5,7 +5,8 @@
             @forelse($posts as $pend)
             <article class="col-lg-4 col-sm-6 mb-5">
                 <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-                    <img class="card-img-top rounded-0" src="{{ url('images/posts/postagens.png')}}" alt="Post thumb">
+                    <img class="card-img-top rounded-0 mh-100" style="width: 350px; height: 200px;" src="{{ url('storage/categorias/'.$pend->categorie_image)}}" alt="Post thumb">
+                   
                     <div class="card-body">
                         <!-- post meta -->
                         <ul class="list-inline mb-3">
