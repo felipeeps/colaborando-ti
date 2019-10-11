@@ -33,8 +33,8 @@
              <dt>Avaliação</dt>
              <dd>{{$posts->nota}}</dd>
          </dl>
-        
+        @can('update_post', $posts)
          <a href="{{$posts->id}}/edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Editar Post</a>
-        
+        @endcan
 @endsection
 

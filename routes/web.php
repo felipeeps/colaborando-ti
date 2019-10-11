@@ -19,4 +19,4 @@ Route::get('/postaprovado/{id}', 'PostController@aprovarPost')->middleware('auth
 Route::get('/postreprovado/{id}', 'PostController@reprovarPost')->middleware('auth');
 Route::get('/postdesativado/{id}', 'PostController@desativarPost')->middleware('auth');
 
-
+Route::get('/roles-permissions', 'HomeController@rolesPermissions');

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\Categories;
-use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -16,6 +16,7 @@ class PostController extends Controller
         $posts = DB::table('posts')
             ->join('categories', 'posts.categorie', '=', 'categories.id')
             ->select('posts.*', 'categories.name')
+            ->where('posts.autor', '=', auth()->user()->name)
             ->where('posts.status', '!=', 'Desativado')
             ->paginate(8);
 
@@ -43,15 +44,22 @@ class PostController extends Controller
     public function edit($id)
     {
         $posts = Post::findOrFail($id);
-
+        //$this->authorize('update-post', $posts);
         $categorias = Categories::all();
+
+        if ( Gate::denies('update-post', $posts))
+            return redirect()->route('posts.index')->with('status','Você não tem acesso para editar esse POST!');
+
         return view('posts.edit', compact('posts', 'categorias'));
     }
 
     public function update(Request $request, $id)
-    {
+    {        
         $posts = Post::findOrFail($id);
-        $posts->update($request->all());
+        if ( Gate::denies('update-post', $posts))
+          abort(403, 'Você não tem permissão para editar esse post!' );
+        
+            $posts->update($request->all());
         return redirect()->route('posts.index');
     }
 
