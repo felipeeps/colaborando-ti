@@ -49,6 +49,7 @@
         <!-- FIM CRUD CURSOS -->
         <br>
 
+        @can('aprove_post', Auth::user())
         <li class="nav-item disable">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
                 <i class="fa fa-users" aria-hidden="true"></i>
@@ -91,7 +92,7 @@
                 <a class="dropdown-item" href="#">Cursos</a>
                 <a class="dropdown-item" href="#">Posts</a>
         </li>
-
+        @endcan
     </ul>
     <!-- FIM Operações Menu Lateral -->
 </div>

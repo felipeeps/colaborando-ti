@@ -6,7 +6,7 @@ Route::get('/postagens/{id}', 'PublicController@dependeciasPaginaPostagensID');
 
 //Rotas
 Auth::routes();
-Route::get('/admin', 'HomeController@index')->middleware('auth');
+Route::get('/admin', 'HomeController@verificarColaborador')->middleware('auth');
 
 //Controller tipo RestFul
 Route::resource('products', 'ProdutoController')->middleware('auth');

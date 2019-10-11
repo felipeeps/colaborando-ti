@@ -47,7 +47,7 @@ class PostController extends Controller
         //$this->authorize('update-post', $posts);
         $categorias = Categories::all();
 
-        if ( Gate::denies('update-post', $posts))
+        if ( Gate::denies('edit_post', $posts))
             return redirect()->route('posts.index')->with('status','Você não tem acesso para editar esse POST!');
 
         return view('posts.edit', compact('posts', 'categorias'));
@@ -56,7 +56,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {        
         $posts = Post::findOrFail($id);
-        if ( Gate::denies('update-post', $posts))
+        if ( Gate::denies('edit_post', $posts))
           abort(403, 'Você não tem permissão para editar esse post!' );
         
             $posts->update($request->all());

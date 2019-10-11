@@ -19,7 +19,6 @@
     </tr>
 
     @forelse($posts as $post)
-    <p>{{$post->autor}}
     @can('view_post', $post)
     <tr>
         <td><a href="posts/{{$post->id}}">{{$post->name_post}}</a></td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -16,6 +17,17 @@ class HomeController extends Controller
     public function index()
     {
         return view('inicio');
+    }
+
+    public function verificarColaborador(){
+        if(auth()->user()->roles->count() == 0){
+            DB::table('role_user')->insert(
+                ['role_id' => 2, 'user_id' => auth()->user()->id]
+            );
+            return view('inicio');
+        }
+        else
+            return view('inicio');
     }
 
     public function rolesPermissions(){

@@ -25,7 +25,7 @@
                          <div class="col-lg-8 text-center text-lg-left">
                              <ul class="list-inline">
                                  <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#">Bem Vindo {{ Auth::user()->name }}</a></li>
-                                 <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="/admin">Administrador</a></li>
+                                 <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="/admin">Colaborar!</a></li>
                                  <li class="list-inline-item">
                                      <a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
