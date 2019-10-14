@@ -8,6 +8,11 @@
         {{ session('status') }}
     </div>
 @endif
+@if (session('statusDelete'))
+    <div class="alert alert-success" role="alert">>
+        {{ session('statusDelete') }}
+    </div>
+@endif
 
 <table class="table table-hover">
     <tr>
@@ -25,7 +30,7 @@
         <td>{{$post->name}}</td>
         <td>{{$post->status}}</td>
         <td>{{ date( 'd/m/Y H:i' , strtotime($post->updated_at))}}</td>
-        @can('delete_post', $post)
+        @can('edit_post', $post)
         <td><a href="postdesativado/{{$post->id}}" style="color: red" class="fa fa-trash" aria-hidden="true" color="red"></a>
             @endcan
     </tr>

@@ -101,6 +101,6 @@ class PostController extends Controller
         DB::table('posts')
             ->where('id', $id)
             ->update(['status' => 'Desativado']);
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('statusDelete','Postagem deletada com sucesso!');;
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Categories;
 use App\Http\Requests\CategoriesRequest;
+use Illuminate\Support\Facades\Gate;
+
 
 class CategoriesController extends Controller
 {
@@ -43,12 +45,18 @@ class CategoriesController extends Controller
 
     public function show($id)
     {
-        //
+        $categories = Categories::findOrFail($id);
+        return view('categories.show', compact('categories'));
     }
 
     public function edit($id)
     {
-        //
+        $categorias = Categories::findOrFail($id);
+
+        if ( Gate::denies('aprove_post', $categorias))
+            return redirect()->route('categories.index')->with('status','Você não tem acesso para editar essa categoria!');
+
+        return view('categories.edit', compact('categorias'));
     }
 
     public function update(Request $request, $id)
