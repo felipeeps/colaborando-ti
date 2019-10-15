@@ -39,8 +39,8 @@ class CategoriesController extends Controller
             $data['categorie_image'] = "";
 
         Categories::create($data);
-        
-        return redirect()->route('categories.index');
+
+        return redirect()->route('categories.index')->with('status-sucess', 'Categoria cadastrada com sucesso!');
     }
 
     public function show($id)
@@ -53,19 +53,39 @@ class CategoriesController extends Controller
     {
         $categorias = Categories::findOrFail($id);
 
-        if ( Gate::denies('aprove_post', $categorias))
-            return redirect()->route('categories.index')->with('status','Você não tem acesso para editar essa categoria!');
+        if (Gate::denies('aprove_post', $categorias))
+            return redirect()->route('categories.index')->with('status', 'Você não tem acesso para editar essa categoria!');
 
         return view('categories.edit', compact('categorias'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $categorias = Categories::findOrFail($id);
+
+        if (Gate::denies('aprove_post', $categorias))
+            return redirect()->route('categories.index')->with('status', 'Você não tem acesso para editar essa categoria!');
+
+        $data = $request->all();
+
+        if ($request->hasFile('categorie_image') && $request->file('categorie_image')->isValid()) {
+            $extensao = $request->categorie_image->extension();
+            $nome = $data['name'];
+            $nameFile = "{$nome}.{$extensao}";
+            $data['categorie_image'] = $nameFile;
+            $upload = $request->categorie_image->storeAs('categorias', $nameFile);
+            if (!$upload)
+                return redirect()->back()->with('status-error', 'Falha no upload da imagem');
+        }
+            $categorias->update($data);
+
+        return redirect()->route('categories.index')->with('status-sucess', 'Categoria Atualizada com Sucesso!');
     }
 
     public function destroy($id)
     {
-        //
+        $categorias = Categories::findOrFail($id);
+        $categorias->delete();
+        return redirect()->route('categories.index')->with('status-sucess', 'Categoria Excluída com Sucesso!');
     }
 }

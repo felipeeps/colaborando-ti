@@ -10,9 +10,10 @@
                 <input name="name" required="" class="form-control" type="text" value='{{$categorias->name}}'>
             </p>
             
+            <img class="card-img-top rounded-0 mh-100" style="width: 100px; height: 100px;" src="{{ url('storage/categorias/'.$categorias->categorie_image)}}" alt="Post thumb">
             <p class="form-group">
                 <label for="categorie_image">Imagem:</label>
-                <input name="categorie_image" required="" class="form-control-file" type="file">
+                <input name="categorie_image" class="form-control-file" type="file">
             </p>
 
             <p class="form-group">

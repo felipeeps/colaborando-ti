@@ -11,6 +11,7 @@ Route::get('/admin', 'HomeController@verificarColaborador')->middleware('auth');
 //Controller tipo RestFul
 Route::resource('products', 'ProdutoController')->middleware('auth');
 Route::resource('categories', 'CategoriesController')->middleware('auth');
+Route::get('/categoriadesativada/{id}', 'CategoriesController@destroy')->middleware('auth');
 Route::resource('posts', 'PostController')->middleware('auth');
 
 //Rota Aprovação de Posts

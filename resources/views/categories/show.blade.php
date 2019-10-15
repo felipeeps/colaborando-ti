@@ -4,7 +4,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Posts</a></li>
+        <li class="breadcrumb-item"><a href="#">Categorias</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ $categories->name}}</li>
     </ol>
 </nav>
@@ -19,6 +19,8 @@
     <dd>{{$categories->name}}</dd>
 
     <dt>Imagem</dt>
+                
+    <dd><img class="card-img-top rounded-0 mh-100" style="width: 350px; height: 200px;" src="{{ url('storage/categorias/'.$categories->categorie_image)}}" alt="Post thumb"></dd>
     <dd>{{$categories->categorie_image}}</dd>
 </dl>
 @can('aprove_post', Auth::user())
