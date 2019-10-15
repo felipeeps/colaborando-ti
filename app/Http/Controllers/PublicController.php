@@ -36,9 +36,23 @@ class PublicController extends Controller{
         return view('conteudo.postagem-id',  compact('categorias', 'posts'));
     }
 
-    public function avaliarPosts($id){
-        //Coleta quantidade de muito bons/bons por posts
-        //faz a somatoria com a avaliaçao do leitor
-        //Grava dados do banco e atualiza a página
+    public function avaliarPostsGostei($id){
+        $posts = Post::findOrFail($id);
+        $nota = $posts->nota;
+        $nota++;
+        DB::table('posts')
+            ->where('id', $id)
+            ->update(['nota' => $nota]);
+        return redirect('postagens/'.$id)->with('success-nota', 'Avaliação registrada com sucesso!');
+    }
+    
+    public function avaliarPostsNaoGostei($id){
+        $posts = Post::findOrFail($id);        
+        $nota = $posts->nota;
+        $nota--;
+        DB::table('posts')
+            ->where('id', $id)
+            ->update(['nota' => $nota]);
+        return redirect('postagens/'.$id)->with('success-nota', 'Avaliação registrada com sucesso!');
     }
 }

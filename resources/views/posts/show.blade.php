@@ -31,7 +31,11 @@
              <dd>{{$posts->status}}</dd>
 
              <dt>Avaliação</dt>
-             <dd>{{$posts->nota}}</dd>
+             @if($posts->nota >= 0)
+             <dd>Seu post está bem avaliado, continue colaborando!</dd>
+             @else
+             <dd>Seu post não está bem avaliado, sugerimos fazer uma revisão de conteúdo!</dd>
+             @endif
          </dl>
         @can('edit_post', $posts)
          <a href="{{$posts->id}}/edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Editar Post</a>

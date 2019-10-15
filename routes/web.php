@@ -3,6 +3,8 @@
 Route::get('/', 'PublicController@dependeciasPaginaInicial')->name('');
 Route::get('/postagens', 'PublicController@dependeciasPaginaPostagens');
 Route::get('/postagens/{id}', 'PublicController@dependeciasPaginaPostagensID');
+Route::get('postagens/Gostei/{id}', 'PublicController@avaliarPostsGostei');
+Route::get('postagens/NaoGostei/{id}', 'PublicController@avaliarPostsNaoGostei');
 
 //Rotas
 Auth::routes();
