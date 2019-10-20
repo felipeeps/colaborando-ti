@@ -20,6 +20,7 @@ class PublicController extends Controller{
         ->join('categories', 'posts.categorie', '=', 'categories.id')
         ->select('posts.*', 'categories.name', 'categories.categorie_image')
         ->where('posts.status', '=', 'Aprovado')
+        ->orderBy('nota', 'desc')
         ->get();
 
         return view('conteudo.postagem',  compact('categorias', 'posts'));
@@ -54,5 +55,36 @@ class PublicController extends Controller{
             ->where('id', $id)
             ->update(['nota' => $nota]);
         return redirect('postagens/'.$id)->with('success-nota', 'Avaliação registrada com sucesso!');
+    }
+
+    public function dependeciasPaginaPostagensCategoria($categoria){
+        $categorias = Categories::all();
+
+        $posts = DB::table('posts')
+        ->join('categories', 'posts.categorie', '=', 'categories.id')
+        ->select('posts.*', 'categories.name', 'categories.categorie_image')
+        ->where([
+            ['posts.status', '=', 'Aprovado'],
+            ['categories.name', '=', $categoria]
+            ])
+        ->orderBy('nota', 'desc')
+        ->get();
+
+        return view('conteudo.postagem',  compact('categorias', 'posts'));
+    }
+
+    public function dependeciasPaginaPostagensColaborador($autor){
+        $categorias = Categories::all();
+        $posts = DB::table('posts')
+        ->join('categories', 'posts.categorie', '=', 'categories.id')
+        ->select('posts.*', 'categories.name', 'categories.categorie_image')
+        ->where([
+            ['posts.status', '=', 'Aprovado'],
+            ['posts.autor', '=', $autor]
+            ])
+        ->orderBy('nota', 'desc')
+        ->get();
+
+        return view('conteudo.postagem',  compact('categorias', 'posts'));
     }
 }

@@ -2,7 +2,9 @@
 //Publicos
 Route::get('/', 'PublicController@dependeciasPaginaInicial')->name('');
 Route::get('/postagens', 'PublicController@dependeciasPaginaPostagens');
-Route::get('/postagens/{id}', 'PublicController@dependeciasPaginaPostagensID');
+Route::get('postagens/linguagem/{categoria}', 'PublicController@dependeciasPaginaPostagensCategoria')->name('public.postCategoria');
+Route::get('postagens/autor/{autor}', 'PublicController@dependeciasPaginaPostagensColaborador')->name('public.postAutor');
+Route::get('/postagens/{id}', 'PublicController@dependeciasPaginaPostagensID')->name('public.postID');
 Route::get('postagens/Gostei/{id}', 'PublicController@avaliarPostsGostei');
 Route::get('postagens/NaoGostei/{id}', 'PublicController@avaliarPostsNaoGostei');
 

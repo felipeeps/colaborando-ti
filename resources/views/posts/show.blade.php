@@ -25,7 +25,7 @@
              <dd>{{$posts->link}}</dd>
 
              <dt>Conteúdo</dt>
-             <dd>{{$posts->description}}</dd>
+             <dd>{!! $posts->description !!}</dd>
 
              <dt>Status</dt>
              <dd>{{$posts->status}}</dd>

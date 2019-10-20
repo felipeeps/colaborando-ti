@@ -13,11 +13,11 @@
                             <!-- post date -->
                             <li class="list-inline-item mr-3 ml-0">{{ date( 'd/m/Y H:i' , strtotime($pend->updated_at))}}</li>
                             <!-- author -->
-                            <li class="list-inline-item mr-3 ml-0">Por {{$pend->autor}}</li>
+                            <li class="list-inline-item mr-3 ml-0">Por <a href="/postagens/autor/{{$pend->autor}}">{{$pend->autor}}</a></li>
                         </ul>
                         <ul class="list-inline mb-3">
                             <!-- categoria -->
-                            <li class="list-inline-item mr-3 ml-0"><i class="ti-tag mr-2"></i>{{$pend->name}}: {{$pend->nivel}}</li>
+                            <li class="list-inline-item mr-3 ml-0"><i class="ti-tag mr-2"></i><a href="/postagens/linguagem/{{$pend->name}}">{{$pend->name}}</a>: {{$pend->nivel}}</li>
                             @if($pend->nota >= 0)
                             <li class="list-inline-item mr-3 ml-0">Avaliação: Boa</li>
                             @else
@@ -26,9 +26,8 @@
                         </ul>
                         <a href="postagens/{{$pend->id}}">
                             <h4 class="card-title">{{$pend->name_post}}</h4>
-                        </a>
-                        <p class="card-text" style="max-width: 50ch;  overflow: hidden;  text-overflow: ellipsis;  white-space: nowrap">{{$pend->description}}</p>
-                        <a href="postagens/{{$pend->id}}" class="btn btn-primary btn-sm">Leia Mais</a>
+                        </a> 
+                        <a href="/postagens/{{$pend->id}}" class="btn btn-primary btn-sm">Leia Mais</a>
                     </div>
                 </div>
             </article>

@@ -1,6 +1,19 @@
 @extends('layouts.master')
 
 @section('conteudo')
+<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+<script type="text/javascript">
+    bkLib.onDomLoaded(function() {
+        nicEditors.allTextAreas()
+    }); // convert all text areas to rich text editor on that page
+
+    bkLib.onDomLoaded(function() {
+        new nicEditor().panelInstance('description');
+    }); // convert text area with id post to rich text editor.
+
+</script>
+
+
 <h2>Novo Post</h2>
 
 <form action="{{route('posts.store')}}" method="post" enctype="multipart/form-data">
@@ -38,7 +51,8 @@
 
     <p class="form-group">
         <label for="description">Descrição:</label>
-        <textarea name="description" class="form-control" rows="3"></textarea>
+        <textarea name="description" id="description" style="width:70%;height:200px;" class="form-control" rows="3"></textarea>
+  </textarea>
     </p>
 
     <p class="form-group">
