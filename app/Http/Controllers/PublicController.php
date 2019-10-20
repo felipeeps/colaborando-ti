@@ -37,6 +37,24 @@ class PublicController extends Controller{
         return view('conteudo.postagem-id',  compact('categorias', 'posts'));
     }
 
+    public function dependeciasPaginaCursos($categoria){
+        
+        $categorias = Categories::all();
+        
+        $courses = DB::table('courses')
+        ->join('categories', 'courses.categorie', '=', 'categories.id')
+        ->select('courses.*', 'categories.name', 'categories.categorie_image')
+        ->where([
+            ['courses.status', '=', 'Aprovado'],
+            ['categories.name', '=', $categoria]
+            ])
+        ->orderBy('nota', 'desc')
+        ->get();
+        
+
+        return view('conteudo.cursos',  compact('categorias', 'courses'));
+    }
+
     public function avaliarPostsGostei($id){
         $posts = Post::findOrFail($id);
         $nota = $posts->nota;
