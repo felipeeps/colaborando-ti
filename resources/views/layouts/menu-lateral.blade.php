@@ -39,11 +39,11 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                 <h6 class="dropdown-header">Cursos:</h6>
-                <a class="dropdown-item" href="{{route('posts.index')}}">Meus Cursos</a>
-                <a class="dropdown-item" href="{{route('posts.create')}}">Novo Curso</a>
+                <a class="dropdown-item" href="{{route('courses.index')}}">Meus Cursos</a>
+                <a class="dropdown-item" href="{{route('courses.create')}}">Novo Curso</a>
                 <h6 class="dropdown-header">Aulas:</h6>
-                <a class="dropdown-item" href="{{route('posts.create')}}">Nova Aula</a>
-                <a class="dropdown-item" href="{{route('posts.create')}}">Listar Aulas</a>
+                <a class="dropdown-item" href="{{route('aulas.create')}}">Nova Aula</a>
+                <a class="dropdown-item" href="{{route('aulas.create')}}">Listar Aulas</a>
             </div>
         </li>
         <!-- FIM CRUD CURSOS -->
@@ -77,7 +77,7 @@
                 <span>Aprovar publicações</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a class="dropdown-item" href="{{route('posts.index')}}">Cursos</a>
+                <a class="dropdown-item" href="{{URL::asset('aprovarcursos')}}">Cursos</a>
                 <a class="dropdown-item" href="{{URL::asset('aprovarposts')}}">Posts</a>
         </li>
         <!-- FIM APROVAÇÕES -->

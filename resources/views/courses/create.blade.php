@@ -1,74 +1,72 @@
 @extends('layouts.master')
 
 @section('conteudo')
-    <h2>Novo Post</h2>
-    
-    <form action="{{route('posts.store')}}" method="post">
-        
-        {!! csrf_field() !!}
 
-        <p class="form-group">
-            <label for="name">Titulo:</label>
-            <input name="name" required="" class="form-control" type="text">
-        </p>
-        
-        <p class="form-group">
-            <label for="categorie">Categoria:</label>
-            <select name="categorie" id="categorie">
-                @foreach($categorias as $categoria)
-                    <option value="{{$categoria->id}}">{{$categoria->name}}</option>                
-                @endforeach
+<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+<script type="text/javascript">
+    bkLib.onDomLoaded(function() {
+        nicEditors.allTextAreas()
+    }); // convert all text areas to rich text editor on that page
+
+    bkLib.onDomLoaded(function() {
+        new nicEditor().panelInstance('description');
+    }); // convert text area with id post to rich text editor.
+</script>
+
+<h2>Novo Curso</h2>
+
+<form action="{{route('courses.store')}}" method="post">
+
+    {!! csrf_field() !!}
+
+    <p class="form-group">
+        <label for="name_course">Nome do Curso:</label>
+        <input name="name_course" required="" class="form-control" type="text">
+    </p>
+ 
+    <p class="form-group">
+        <label for="categorie">Categoria:</label>
+        <select class="custom-select" name="categorie" id="categorie">
+            <option value="" disabled selected hidden>Escolha a categoria do POST</option>
+            @foreach($categorias as $categoria)
+            <option value="{{$categoria->id}}">{{$categoria->name}}</option>
+            @endforeach
         </select>
-        </p>
+    </p>
 
-        <p class="form-group">
-            <label for="nivel">Nivel de Conhecimento</label>
-            <select class="form-control" name="nivel">
+    <p class="form-group">
+        <label for="carga_horaria">Carga Horária</label>
+        <input name="carga_horaria" required="" placeholder="Tempo estimado (Horas ou minutos)" class="form-control" type="text">
+    </p>
+
+    <p class="form-group">
+        <label for="nivel">Nivel de Conhecimento</label>
+        <select class="form-control" name="nivel">
             <option>Iniciante</option>
             <option>Intermediário</option>
             <option>Avançado</option>
-            </select>
-        </p>
+        </select>
+    </p>
 
-        <p class="form-group">
-            <label for="link">Link:</label>
-            <input name="link" required="" class="form-control" type="text">
-        </p>
+    <p class="form-group">
+        <label for="description">Descrição:</label>
+        <textarea name="description" id="description" style="width:70%;height:200px;" class="form-control" rows="3"></textarea>
+    </p>
 
-        <p class="form-group">
-            <label for="description">Descrição:</label>
-            <textarea name="description" class="form-control" rows="3"></textarea>
-        </p>
+    <p class="form-group">
+        <input type="hidden" name="status" value="Aguardando Aprovação">
+    </p>
 
-        <p class="form-group">
-            <label for="status">Status</label>
-            <select class="form-control" name="status">
-            <option>Mandar para Aprovação</option>
-            <option>Publicar</option>
-            </select>
-        </p>
+    <p class="form-group">
+        <input type="hidden" name="nota" value="0">
+    </p>
 
-        <label for="status">Como você avalia esse post?</label>
-        <br>
-        <p class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="nota" id="op1" value="1">
-            <label class="form-check-label" for="inlineRadio1">Ruim</label>
-        </p>
-        <p class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="nota" id="op2" value="2">
-            <label class="form-check-label" for="inlineRadio2">Bom</label>
-        </p>
-        <p class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="nota" id="op3" value="3">
-            <label class="form-check-label" for="inlineRadio3">Muito Bom</label>
-        </p>
-            
-        <p class="form-group">
-            <input class="btn btn-default" type="reset" value="Limpar">
-            <input class="btn btn-primary" type="submit" value="Enviar">
-        </p>
-@endsection
+    <p class="form-group">
+        <input class="btn btn-default" type="reset" value="Limpar">
+        <input class="btn btn-primary" type="submit" value="Enviar">
+    </p>
 
-
-
-        
+    <p class="form-group">
+        <input type="hidden" name="autor" value="{{Auth::user()->name}}">
+    </p>
+    @endsection

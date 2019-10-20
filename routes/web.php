@@ -13,7 +13,8 @@ Auth::routes();
 Route::get('/admin', 'HomeController@verificarColaborador')->middleware('auth');
 
 //Controller tipo RestFul
-Route::resource('products', 'ProdutoController')->middleware('auth');
+Route::resource('aulas', 'AulasController')->middleware('auth');
+Route::resource('courses', 'CoursesController')->middleware('auth');
 Route::resource('categories', 'CategoriesController')->middleware('auth');
 Route::get('/categoriadesativada/{id}', 'CategoriesController@destroy')->middleware('auth');
 Route::resource('posts', 'PostController')->middleware('auth');
@@ -23,5 +24,11 @@ Route::get('/aprovarposts', 'PostController@listaPostsAprovar')->name('aprovarpo
 Route::get('/postaprovado/{id}', 'PostController@aprovarPost')->middleware('auth');
 Route::get('/postreprovado/{id}', 'PostController@reprovarPost')->middleware('auth');
 Route::get('/postdesativado/{id}', 'PostController@desativarPost')->middleware('auth');
+
+//Rotas Aprovação de Cursos
+Route::get('/aprovarcursos', 'CoursesController@listaCursosAprovar')->name('aprovarcursos')->middleware('auth');
+Route::get('/cursoaprovado/{id}', 'CoursesController@aprovarCurso')->middleware('auth');
+Route::get('/cursoreprovado/{id}', 'CoursesController@reprovarCurso')->middleware('auth');
+Route::get('/cursodesativado/{id}', 'CoursesController@desativarCurso')->middleware('auth');
 
 Route::get('/roles-permissions', 'HomeController@rolesPermissions');
