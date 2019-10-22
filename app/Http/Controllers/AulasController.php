@@ -10,8 +10,15 @@ class AulasController extends Controller
 {
 
     public function index()
-    {
-        //
+    {        
+        $aulas = DB::table('aulas')
+        ->join('courses', 'aulas.course', '=', 'courses.id_course')
+        ->select('aulas.*', 'courses.name_course')
+        ->where('aulas.autor', '=', auth()->user()->name)
+        ->orderBy('name_course', 'asc')
+        ->paginate(8);
+
+    return view('aulas.index', compact('aulas'));
     }
 
     public function create()
@@ -19,6 +26,7 @@ class AulasController extends Controller
         $courses = DB::table('courses')
         ->select('id_course', 'name_course')
         ->where('courses.autor', '=', auth()->user()->name)
+        ->orderBy('name_course', 'asc')
         ->get();
 
         return view('aulas.create', compact('courses'));

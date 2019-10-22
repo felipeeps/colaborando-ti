@@ -27,7 +27,7 @@
     <p class="form-group">
         <label for="categorie">Categoria:</label>
         <select class="custom-select" name="categorie" id="categorie">
-            <option value="" disabled selected hidden>Escolha a categoria do POST</option>
+            <option value="" disabled selected hidden>Escolha a categoria do Curso</option>
             @foreach($categorias as $categoria)
             <option value="{{$categoria->id}}">{{$categoria->name}}</option>
             @endforeach

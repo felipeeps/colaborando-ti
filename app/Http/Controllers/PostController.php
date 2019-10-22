@@ -25,7 +25,10 @@ class PostController extends Controller
 
     public function create()
     {
-        $categorias = Categories::all();
+        $categorias = DB::table('categories')
+            ->select('categories.*')
+            ->orderBy('name', 'asc')
+            ->get();
         return view('posts.create', compact('categorias'));
     }
 
@@ -44,22 +47,25 @@ class PostController extends Controller
     public function edit($id)
     {
         $posts = Post::findOrFail($id);
-        //$this->authorize('update-post', $posts);
-        $categorias = Categories::all();
+        //$this->authorize('update-post', $posts);       
+        $categorias = DB::table('categories')
+            ->select('categories.*')
+            ->orderBy('name', 'asc')
+            ->get();
 
-        if ( Gate::denies('edit_post', $posts))
-            return redirect()->route('posts.index')->with('status','Você não tem acesso para editar esse POST!');
+        if (Gate::denies('edit_post', $posts))
+            return redirect()->route('posts.index')->with('status', 'Você não tem acesso para editar esse POST!');
 
         return view('posts.edit', compact('posts', 'categorias'));
     }
 
     public function update(Request $request, $id)
-    {        
+    {
         $posts = Post::findOrFail($id);
-        if ( Gate::denies('edit_post', $posts))
-          abort(403, 'Você não tem permissão para editar esse post!' );
-        
-            $posts->update($request->all());
+        if (Gate::denies('edit_post', $posts))
+            abort(403, 'Você não tem permissão para editar esse post!');
+
+        $posts->update($request->all());
         return redirect()->route('posts.index');
     }
 
@@ -101,6 +107,6 @@ class PostController extends Controller
         DB::table('posts')
             ->where('id', $id)
             ->update(['status' => 'Desativado']);
-        return redirect()->route('posts.index')->with('statusDelete','Postagem deletada com sucesso!');;
+        return redirect()->route('posts.index')->with('statusDelete', 'Postagem deletada com sucesso!');;
     }
 }

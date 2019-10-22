@@ -1,8 +1,10 @@
 <?php
 //Publicos
 Route::get('/', 'PublicController@dependeciasPaginaInicial')->name('');
-Route::get('/postagens', 'PublicController@dependeciasPaginaPostagens');
-Route::get('/cursos/{categoria}', 'PublicController@dependeciasPaginaCursos');
+Route::get('/postagens', 'PublicController@dependeciasPaginaPostagens')->name('postagens');
+Route::get('/cursos/{categoria}', 'PublicController@dependeciasPaginaCursos')->name('public.cursos');
+Route::get('/cursos', 'PublicController@dependeciasPaginaCurso')->name('public.cursos');
+Route::get('/curso/{id}', 'PublicController@dependeciasPaginaCursosID')->name('public.cursosID');
 Route::get('postagens/linguagem/{categoria}', 'PublicController@dependeciasPaginaPostagensCategoria')->name('public.postCategoria');
 Route::get('postagens/autor/{autor}', 'PublicController@dependeciasPaginaPostagensColaborador')->name('public.postAutor');
 Route::get('/postagens/{id}', 'PublicController@dependeciasPaginaPostagensID')->name('public.postID');

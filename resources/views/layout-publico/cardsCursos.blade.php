@@ -9,9 +9,10 @@
                   <ul class="list-unstyled">
                       <!-- notice item -->
                       <li class="d-md-table mb-4 w-100 border-bottom hover-shadow">
-                          <div class="d-md-table-cell text-center p-4 bg-primary text-white mb-4 mb-md-0"><span class="h2 d-block">{{$pend->name}}</span> 40 AULAS</div>
+
+                          <div class="d-md-table-cell text-center p-4 bg-primary text-white mb-4 mb-md-0"><span class="h2 d-block">{{$pend->name}}</span> {{DB::table('aulas')->where('course', '=', $pend->id_course)->count()}} Aulas</div>
                           <div class="d-md-table-cell px-4 vertical-align-middle mb-4 mb-md-0">
-                              <a href="notice-single.html" class="h4 mb-3 d-block">{{$pend->name_course}}</a>
+                              <a href="/curso/{{$pend->id_course}}" class="h4 mb-3 d-block">{{$pend->name_course}}</a>
                               <p class="mb-0">Autor: {{$pend->autor}} | Nível: {{$pend->nivel}} </p>
                               @if($pend->nota >= 0)
                               <p class="mb-0">Avaliação: Boa</p>
@@ -19,7 +20,7 @@
                               <p class="mb-0">Avaliação: Ruim</p>
                               @endif
                           </div>
-                          <div class="d-md-table-cell text-right pr-0 pr-md-4"><a href="notice-single.html" class="btn btn-primary">Começar!</a></div>
+                          <div class="d-md-table-cell text-right pr-0 pr-md-4"><a href="/curso/{{$pend->id_course}}" class="btn btn-primary">Começar!</a></div>
                       </li>
                       <!-- notice item -->
                   </ul>

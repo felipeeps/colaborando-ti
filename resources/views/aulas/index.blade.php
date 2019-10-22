@@ -17,32 +17,28 @@
 <table class="table table-hover">
     <tr>
         <th scope="col">Nome do Curso:</th>
-        <th scope="col">Categoria:</th>
-        <th scope="col">Aulas:</th>
-        <th scope="col">Status:</th>
+        <th scope="col">Aula</th>
         <th scope="col">Última modificação:</th>
         <th scope="col"></th>
     </tr>
 
-    @forelse($courses as $course)
-    @can('view_course', $course)
+    @forelse($aulas as $aula)
+    @can('view_aulas', $aulas)
     <tr>
-        <td><a href="courses/{{$course->id_course}}">{{$course->name_course}}</a></td>
-        <td>{{$course->name}}</td>
-        <td>Nº Aulas</td>
-        <td>{{$course->status}}</td>
-        <td>{{ date( 'd/m/Y H:i' , strtotime($course->updated_at))}}</td>
-        @can('edit_course', $course)
-        <td><a href="coursedesativado/{{$course->id_course}}" style="color: red" class="fa fa-trash" aria-hidden="true" color="red"></a>
+        <td>{{$aula->name_course}}</td>
+        <td><a href="aulas/{{$aula->id_aula}}">{{$aula->name_aula}}</a></td>
+        <td>{{ date( 'd/m/Y H:i' , strtotime($aula->updated_at))}}</td>
+        @can('edit_aulas', $aulas)
+        <td><a href="auladesativado/{{$aula->id_aulaa}}" style="color: red" class="fa fa-trash" aria-hidden="true" color="red"></a>
             @endcan
     </tr>
     @endcan
     @empty
     <div class="alert alert-danger" role="alert">
-        Você não possui nenhum Curso <a href="#" class="alert-danger">estruture um novo Curso</a> para compatilhar seu conhecimento.
+        Você não possui nenhuma Aula <a href="#" class="alert-danger">estruture uma Aula no seu curso</a> para compatilhar seu conhecimento.
     </div>
     @endforelse
 </table>
 
-{!! $courses->render() !!}
+{!! $aulas->render() !!}
 @endsection

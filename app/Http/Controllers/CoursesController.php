@@ -16,6 +16,7 @@ class CoursesController extends Controller
             ->select('courses.*', 'categories.name')
             ->where('courses.autor', '=', auth()->user()->name)
             ->where('courses.status', '!=', 'Desativado')
+            ->orderBy('name', 'asc')
             ->paginate(8);
 
         return view('courses.index', compact('courses'));
@@ -23,7 +24,10 @@ class CoursesController extends Controller
 
     public function create()
     {
-        $categorias = Categories::all();
+        $categorias = DB::table('categories')
+        ->select('categories.*')
+        ->orderBy('name', 'asc')
+        ->get();
         return view('courses.create', compact('categorias'));
     }
 
@@ -50,7 +54,7 @@ class CoursesController extends Controller
     {
         //
     }
-    
+
     public function listaCursosAprovar()
     { //busca todos os posts com Aprovação pendente
         $pendente = DB::table('courses')
@@ -83,6 +87,6 @@ class CoursesController extends Controller
         DB::table('courses')
             ->where('id_course', $id)
             ->update(['status' => 'Desativado']);
-        return redirect()->route('courses.index')->with('statusDelete','Curso deletado com sucesso!');;
+        return redirect()->route('courses.index')->with('statusDelete', 'Curso deletado com sucesso!');;
     }
 }

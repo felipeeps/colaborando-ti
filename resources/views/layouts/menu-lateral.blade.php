@@ -39,11 +39,11 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                 <h6 class="dropdown-header">Cursos:</h6>
-                <a class="dropdown-item" href="{{route('courses.index')}}">Meus Cursos</a>
                 <a class="dropdown-item" href="{{route('courses.create')}}">Novo Curso</a>
+                <a class="dropdown-item" href="{{route('courses.index')}}">Meus Cursos</a>
                 <h6 class="dropdown-header">Aulas:</h6>
                 <a class="dropdown-item" href="{{route('aulas.create')}}">Nova Aula</a>
-                <a class="dropdown-item" href="{{route('aulas.create')}}">Listar Aulas</a>
+                <a class="dropdown-item" href="{{route('aulas.index')}}">Listar Aulas</a>
             </div>
         </li>
         <!-- FIM CRUD CURSOS -->
